@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: pr-example
+  namespace: argocd
+spec:
+  generators:
+    - pullRequest:
+        github:
+          owner: lyzhang1999
+          # The Github repository
+          repo: argocd-example-frontend
+          tokenRef:
+            secretName: github-token
+            key: token
+        requeueAfterSeconds: 10
+  template:
+    metadata:
+      name: "myapp-{{branch}}-{{number}}"
+    spec:
+      source:
+        repoURL: "https://github.com/lyzhang1999/argocd-example.git"
+        targetRevision: HEAD
+        path: helm
+        helm:
+          parameters:
+            - name: "frontend.tag"
+              value: "{{head_sha}}"
+      project: default
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{branch}}"
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true

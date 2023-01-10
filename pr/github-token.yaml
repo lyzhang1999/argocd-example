@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  token: Z2hwX2ZzYVF2UFRwSmVaZDVGRjZTcDQwbHhwY1c3UktDdDMzYVNpUw==
+kind: Secret
+metadata:
+  name: github-token
+  namespace: argocd
+type: Opaque

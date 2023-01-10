@@ -5,26 +5,26 @@ metadata:
   namespace: argocd
 spec:
   generators:
-  - git:
-      repoURL: "https://github.com/lyzhang1999/kubernetes-example.git"
-      revision: HEAD
-      files:
-      - path: "helm-env/env/*/values.yaml"
+    - git:
+        repoURL: "https://github.com/lyzhang1999/argocd-example.git"
+        revision: HEAD
+        files:
+          - path: "helm-env/env/*/values.yaml"
   template:
     metadata:
       name: "{{path.basename}}"
     spec:
       project: default
       source:
-        repoURL: "https://github.com/lyzhang1999/kubernetes-example.git"
+        repoURL: "https://github.com/lyzhang1999/argocd-example.git"
         targetRevision: HEAD
         path: "helm-env"
         helm:
           valueFiles:
-          - "env/{{path.basename}}/values.yaml"
+            - "env/{{path.basename}}/values.yaml"
       destination:
-        server: 'https://kubernetes.default.svc'
-        namespace: '{{path.basename}}'
+        server: "https://kubernetes.default.svc"
+        namespace: "{{path.basename}}"
       syncPolicy:
         automated: {}
         syncOptions:
