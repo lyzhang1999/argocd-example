@@ -4,22 +4,18 @@ metadata:
   name: example
   namespace: argocd
 spec:
-  template:
-    metadata:
-      name: example
-    spec:
-      project: default
-      source:
-        repoURL: "https://github.com/lyzhang1999/argocd-example.git"
-        targetRevision: HEAD
-        path: "helm"
-        helm:
-          valueFiles:
-            - "helm/values.yaml"
-      destination:
-        server: "https://kubernetes.default.svc"
-        namespace: "example"
-      syncPolicy:
-        automated: {}
-        syncOptions:
-          - CreateNamespace=true
+  project: default
+  source:
+    repoURL: "https://github.com/lyzhang1999/argocd-example.git"
+    targetRevision: HEAD
+    path: helm
+    helm:
+      valueFiles:
+        - "values.yaml"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: "example"
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
