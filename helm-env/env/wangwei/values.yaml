@@ -1,3 +1,0 @@
-frontend:
-  image: lyzhang1999/frontend
-  tag: latest-env
