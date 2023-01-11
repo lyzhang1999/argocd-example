@@ -6,6 +6,8 @@
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 
+backup: https://raw.githubusercontent.com/argoproj/argo-cd/992315930472dcf34c2f5d3fedf2f3db43627ce5/manifests/install.yaml
+
 ## install argocd
 
 kubectl create namespace argocd
