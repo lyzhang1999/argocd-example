@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: example-staging
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/lyzhang1999/argocd-example.git"
+    targetRevision: HEAD
+    path: helm
+    helm:
+      valueFiles:
+        - "values-staging.yaml"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: "example-staging"
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
