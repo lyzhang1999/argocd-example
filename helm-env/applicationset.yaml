@@ -8,11 +8,12 @@ spec:
     - git:
         repoURL: "https://github.com/lyzhang1999/argocd-example.git"
         revision: HEAD
+        pathParamPrefix: example
         files:
           - path: "helm-env/env/*/values.yaml"
   template:
     metadata:
-      name: "{{path.basename}}"
+      name: "{{example.path.basename}}"
     spec:
       project: default
       source:
@@ -21,10 +22,10 @@ spec:
         path: "helm-env"
         helm:
           valueFiles:
-            - "env/{{path.basename}}/values.yaml"
+            - "env/{{example.path.basename}}/values.yaml"
       destination:
         server: "https://kubernetes.default.svc"
-        namespace: "{{path.basename}}"
+        namespace: "{{example.path.basename}}"
       syncPolicy:
         automated: {}
         syncOptions:
