@@ -1,3 +1,11 @@
+## 视频
+
+https://www.bilibili.com/video/BV1Wv4y1y7Kr/?spm_id_from=333.999.0.0
+
+## PPT
+
+https://yunify.anybox.qingcloud.com/s/AzhJG9gefoqvzWfJNCBXhRgMGyPfl1k9
+
 ## 创建集群
 
 ```
