@@ -1,3 +1,10 @@
+## 简介
+使用 ArgoCD ApplicationSet 来管理多环境，包括 Git Generator 和 PR Generator。
+
+## 完整课程（40讲）
+
+https://time.geekbang.org/column/intro/100312001
+
 ## 视频
 
 https://www.bilibili.com/video/BV1Wv4y1y7Kr/?spm_id_from=333.999.0.0
